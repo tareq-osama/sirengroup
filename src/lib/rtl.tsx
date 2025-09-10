@@ -44,6 +44,11 @@ export const rtlClasses = {
   },
 };
 
-export function getRTLClass(property: keyof typeof rtlClasses, direction: 'left' | 'right' | 'center' = 'left') {
-  return rtlClasses[property][direction];
+export function getRTLClass(property: keyof typeof rtlClasses, direction: 'left' | 'right' = 'left'): string {
+  const propertyObj = rtlClasses[property] as Record<string, string>;
+  return propertyObj[direction] || '';
+}
+
+export function getTextAlignClass(direction: 'left' | 'right' | 'center' = 'left'): string {
+  return rtlClasses.textAlign[direction];
 }
