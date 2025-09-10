@@ -17,42 +17,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { ModeToggle } from "@/components/marketing/mode-toggle";
-
-const solutions = [
-  {
-    title: "For Small Businesses",
-    href: "/solutions/small-business",
-    description: "Complete business management platform for solo entrepreneurs"
-  },
-  {
-    title: "For Consultants",
-    href: "/solutions/consultants",
-    description: "Professional consulting platform for experts"
-  },
-  {
-    title: "Case Studies",
-    href: "/case-studies",
-    description: "See how businesses transformed with Tareq"
-  }
-];
-
-const resources = [
-  {
-    title: "Help Center",
-    href: "/help",
-    description: "Get answers to your questions quickly"
-  },
-  {
-    title: "Blog",
-    href: "/blog",
-    description: "Latest insights on business growth and management"
-  },
-  {
-    title: "Documentation",
-    href: "/docs",
-    description: "Complete guide to using Tareq platform"
-  }
-];
+ 
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -122,7 +87,7 @@ export default function Navigation() {
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <Image src="/tareq-logo.svg" alt="Tareq Logo" width={80} height={100} />
+              <Image src="/logo.svg" alt="Logo" width={80} height={100} />
             </Link>
 
 
@@ -130,7 +95,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center space-x-4">
               <ModeToggle />
               <Button size="sm" asChild>
-                <Link href="https://tareqosama.com/contact">Let's work together</Link>
+                <Link href="https://sirengroup.com/contact">Let's work together</Link>
               </Button>
             </div>
 
@@ -218,12 +183,12 @@ export default function Navigation() {
                     <ModeToggle />
                   </div>
                   <Button variant="ghost" size="sm" asChild>
-                    <Link href="https://tareqosama.com/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link href="https://sirengroup.com/contact" onClick={() => setIsMobileMenuOpen(false)}>
                     Join Newsletter
                     </Link>
                   </Button>
                   <Button size="sm" asChild>
-                    <Link href="https://tareqosama.com/consultation" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link href="https://sirengroup.com/consultation" onClick={() => setIsMobileMenuOpen(false)}>
                     Get a Consultation                    </Link>
                   </Button>
                 </div>

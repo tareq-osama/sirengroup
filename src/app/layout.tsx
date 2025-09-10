@@ -17,12 +17,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tareqosama.com'),
+  metadataBase: new URL('https://sirengroup.com'),
   title: {
-    default: "Tareq - All-in-One Client Portal for One-Person Businesses",
-    template: "%s | Tareq"
+    default: " ",
+    template: "%s | Sirengroup"
   },
-  description: "Tareq is the complete client management platform for one-person businesses. Streamline client communication, automate invoicing, track projects, and grow your revenue with our all-in-one solution.",
+  description: "Sirengroup is the complete client management platform for one-person businesses. Streamline client communication, automate invoicing, track projects, and grow your revenue with our all-in-one solution.",
   keywords: [
     "client portal",
     "business management software",
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
     "business automation",
     "client dashboard"
   ],
-  authors: [{ name: "Tareq Team", url: "https://tareqosama.com" }],
-  creator: "Tareq",
-  publisher: "Tareq Inc.",
+  authors: [{ name: "Sirengroup Team", url: "https://sirengroup.com" }],
+  creator: "Sirengroup",
+  publisher: "Sirengroup Inc.",
   formatDetection: {
     email: false,
     address: false,
@@ -48,25 +48,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://tareqosama.com",
-    title: "Tareq - All-in-One Client Portal for One-Person Businesses",
-    description: "Transform your one-person business with Tareq's complete client management platform. Streamline communication, automate billing, and grow your revenue.",
-    siteName: "Tareq",
+    url: "https://sirengroup.com",
+    title: "Sirengroup",
+    description: " ",
+    siteName: "Sirengroup",
     images: [
       {
-        url: "https://tareqosama.com/og-image.jpg",
+        url: "https://sirengroup.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tareq - Client Portal Platform",
+        alt: "Sirengroup",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tareq - All-in-One Client Portal",
-    description: "Transform your one-person business with our complete client management platform.",
-    creator: "@tareq",
-    images: ["https://tareqosama.com/twitter-image.jpg"],
+    title: "Sirengroup",
+    description: "",
+    creator: "@Sirengroup",
+    images: ["https://sirengroup.com/twitter-image.jpg"],
   },
   robots: {
     index: true,
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   category: "Business Software",
-  classification: "Business Management Platform",
+  classification: "",
   referrer: "origin-when-cross-origin",
   colorScheme: "dark light",
   themeColor: [
@@ -117,9 +117,9 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://tareqosama.com",
+    canonical: "https://sirengroup.com",
     languages: {
-      "en-US": "https://tareqosama.com",
+      "en-US": "https://sirengroup.com",
     },
   },
 }
@@ -127,12 +127,12 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Tareq",
+  name: "Sirengroup",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   description: "All-in-one client portal and business management platform for one-person businesses",
-  url: "https://tareqosama.com",
-  screenshot: "https://tareqosama.com/screenshot.jpg",
+  url: "https://sirengroup.com",
+  screenshot: "https://sirengroup.com/screenshot.jpg",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.9",
@@ -147,8 +147,8 @@ const jsonLd = {
   },
   creator: {
     "@type": "Organization",
-    name: "Tareq Inc.",
-    url: "https://tareqosama.com"
+    name: "Sirengroup Inc.",
+    url: "https://sirengroup.com"
   }
 }
 
