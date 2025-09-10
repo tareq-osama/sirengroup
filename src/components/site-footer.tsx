@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MessageSquare, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { navigationItems } from "@/lib/content";
 
 export function SiteFooter() {
   return (
