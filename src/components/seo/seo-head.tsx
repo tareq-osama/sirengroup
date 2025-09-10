@@ -11,15 +11,15 @@ interface SEOProps {
 }
 
 export default function SEOHead({
-  title = "Tareq - All-in-One Client Portal",
-  description = "Transform your one-person business with Tareq's complete client management platform.",
+  title = "YourApp - All-in-One Solution",
+  description = "Transform your business with YourApp's complete solution platform.",
   canonical,
-  ogImage = "https://tareqosama.com/og-image.jpg",
+  ogImage = "https://yourapp.com/og-image.jpg",
   ogType = "website",
   noindex = false,
   schema
 }: SEOProps) {
-  const fullTitle = title.includes('Tareq') ? title : `${title} | Tareq`
+  const fullTitle = title.includes('YourApp') ? title : `${title} | YourApp`
   
   return (
     <Head>
@@ -34,7 +34,7 @@ export default function SEOHead({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       <meta property="og:image" content={ogImage} />
-              <meta property="og:url" content={canonical || "https://tareqosama.com"} />
+              <meta property="og:url" content={canonical || "https://yourapp.com"} />
       
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
