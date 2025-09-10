@@ -1,214 +1,140 @@
-"use client"
-
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { PageHero } from "@/components/page-hero";
+import { Section } from "@/components/section";
+import { ContactForm } from "@/components/contact-form";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { MessageSquare, Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen  text-white">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center space-y-8"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-500/10 border border-gray-500/20">
-              <MessageSquare className="w-4 h-4 text-gray-400" />
-              <span className="text-sm font-medium text-gray-300 tracking-wide uppercase">
-                GET IN TOUCH
-              </span>
-            </div>
-            
-            <h1 className="text-h1 font-bold leading-tight tracking-tight">
-              Let's transform your
-              <span className="block mt-2 text-gray-300">Business Together</span>
-            </h1>
-            
-        
-          </motion.div>
+      <PageHero
+        title="تواصل معنا"
+        description="نحن هنا لمساعدتك في رحلتك الأكاديمية"
+      />
+
+      {/* Contact Form Section */}
+      <Section>
+        <div className="max-w-4xl mx-auto">
+          <ContactForm />
         </div>
-      </section>
+      </Section>
 
-      {/* Contact Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Card className="bg-zinc-900/50 border-zinc-700">
-                <CardContent className="p-8 space-y-8">
-                  <div className="space-y-4">
-                    <h2 className="text-2xl font-bold text-white">Send us a message</h2>
-                    <p className="text-zinc-400">
-                      Tell us about your business and how I can help you.
-                    </p>
-                  </div>
+      {/* Contact Information */}
+      <Section className="bg-muted/50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">معلومات التواصل</h2>
+            <p className="text-lg text-muted-foreground">
+              يمكنك التواصل معنا عبر القنوات التالية
+            </p>
+          </div>
 
-                  <form className="space-y-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName" className="text-sm font-medium text-white">
-                          First Name
-                        </Label>
-                        <Input
-                          id="firstName"
-                          placeholder="Enter your first name"
-                          className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-400"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName" className="text-sm font-medium text-white">
-                          Last Name
-                        </Label>
-                        <Input
-                          id="lastName"
-                          placeholder="Enter your last name"
-                          className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-400"
-                        />
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card>
+              <CardHeader className="text-center">
+                <Phone className="h-8 w-8 text-primary mx-auto mb-2" />
+                <CardTitle className="text-lg">الهاتف</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-muted-foreground">+123 456 7890</p>
+                <p className="text-sm text-muted-foreground mt-1">متاح من 9 صباحاً - 6 مساءً</p>
+              </CardContent>
+            </Card>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm font-medium text-white">
-                        Email Address
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email"
-                        className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-400"
-                      />
-                    </div>
+            <Card>
+              <CardHeader className="text-center">
+                <Mail className="h-8 w-8 text-primary mx-auto mb-2" />
+                <CardTitle className="text-lg">البريد الإلكتروني</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-muted-foreground">info@sirene.edu</p>
+                <p className="text-sm text-muted-foreground mt-1">الرد خلال 24 ساعة</p>
+              </CardContent>
+            </Card>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="company" className="text-sm font-medium text-white">
-                        business Name
-                      </Label>
-                      <Input
-                        id="company"
-                        placeholder="Enter your business name"
-                        className="bg-zinc-800 border-zinc-600 text-white placeholder:text-zinc-400"
-                      />
-                    </div>
+            <Card>
+              <CardHeader className="text-center">
+                <MessageSquare className="h-8 w-8 text-primary mx-auto mb-2" />
+                <CardTitle className="text-lg">واتساب</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-muted-foreground">+123 456 7890</p>
+                <p className="text-sm text-muted-foreground mt-1">متاح 24/7</p>
+              </CardContent>
+            </Card>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm font-medium text-white">
-                        Message
-                      </Label>
-                      <textarea
-                        id="message"
-                        rows={6}
-                        placeholder="Tell us about your business and what challenges you're facing..."
-                        className="w-full px-3 py-2 bg-zinc-800 border border-zinc-600 rounded-md text-white placeholder:text-zinc-400 focus:ring-2 focus:ring-gray-500 focus:border-transparent resize-none"
-                      />
-                    </div>
-
-                    <Button 
-                      type="submit"
-                      className="w-full bg-gray-500 text-white hover:bg-gray-400 font-semibold py-3 rounded-xl group"
-                    >
-                      Send Message
-                      <Send className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-white">Get in touch</h2>
-          
-              </div>
-
-              <div className="space-y-6">
-                <Card className="bg-zinc-900/30 border-zinc-800">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gray-500/10 border border-gray-500/20 flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-5 h-5 text-gray-400" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="font-semibold text-white">Email</h3>
-                        <p className="text-zinc-400">For general inquiries and support</p>
-                                        <a href="mailto:hello@tareqosama.com" className="text-gray-400 hover:text-gray-300 transition-colors">
-                  hello@tareqosama.com
-                </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-zinc-900/30 border-zinc-800">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gray-500/10 border border-gray-500/20 flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-5 h-5 text-gray-400" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="font-semibold text-white">Phone</h3>
-                        <p className="text-zinc-400">Speak directly with our team</p>
-                                        <a href="tel:+1-555-TAREQ" className="text-gray-400 hover:text-gray-300 transition-colors">
-                  +1 (555) TAREQ
-                </a>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-zinc-900/30 border-zinc-800">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gray-500/10 border border-gray-500/20 flex items-center justify-center flex-shrink-0">
-                        <Clock className="w-5 h-5 text-gray-400" />
-                      </div>
-                      <div className="space-y-2">
-                        <h3 className="font-semibold text-white">Hours</h3>
-                        <p className="text-zinc-400">Monday - Friday</p>
-                        <p className="text-white">9:00 AM - 6:00 PM PST</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-          
-              </div>
-
-              <Card className="bg-gradient-to-r from-gray-500/10 to-blue-500/10 border-gray-500/20">
-                <CardContent className="p-6 text-center space-y-4">
-                  <h3 className="text-lg font-bold text-white">Need immediate help?</h3>
-                  <p className="text-sm text-zinc-300">
-                    Book a 15-minute call with tareq to discuss your specific needs
-                  </p>
-                  <Button className="bg-gray-500 text-white hover:bg-gray-400 font-semibold px-6 py-2 rounded-xl">
-                    Schedule a Call
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
+            <Card>
+              <CardHeader className="text-center">
+                <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
+                <CardTitle className="text-lg">العنوان</CardTitle>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-muted-foreground">دمشق، سوريا</p>
+                <p className="text-sm text-muted-foreground mt-1">مركز المدينة</p>
+              </CardContent>
+            </Card>
           </div>
         </div>
-      </section>
+      </Section>
+
+      {/* Office Hours */}
+      <Section>
+        <div className="max-w-4xl mx-auto">
+          <Card>
+            <CardHeader>
+              <div className="flex items-center space-x-2">
+                <Clock className="h-6 w-6 text-primary" />
+                <CardTitle>ساعات العمل</CardTitle>
+              </div>
+              <CardDescription>
+                أوقات استقبال الطلاب والزوار
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">الأيام العادية</h4>
+                  <p className="text-muted-foreground">السبت - الخميس: 9:00 ص - 6:00 م</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">الجمعة</h4>
+                  <p className="text-muted-foreground">9:00 ص - 2:00 م</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">الاستشارات عن بُعد</h4>
+                  <p className="text-muted-foreground">متاحة 24/7 عبر واتساب</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-foreground mb-2">المواعيد الخاصة</h4>
+                  <p className="text-muted-foreground">حسب الطلب مع موعد مسبق</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
+
+      {/* WhatsApp CTA */}
+      <Section className="bg-green-50 dark:bg-green-950/20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-foreground mb-4">
+            تواصل عبر واتساب
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            للحصول على استجابة سريعة، تواصل معنا مباشرة عبر واتساب
+          </p>
+          <a
+            href="https://wa.me/1234567890"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors"
+          >
+            <MessageSquare className="h-5 w-5 ml-2" />
+            ابدأ المحادثة الآن
+          </a>
+        </div>
+      </Section>
     </div>
   );
-} 
+}

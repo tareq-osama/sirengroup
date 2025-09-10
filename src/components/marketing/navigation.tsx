@@ -2,22 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Menu, X, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ModeToggle } from "@/components/marketing/mode-toggle";
- 
+import { navigationItems } from "@/lib/content";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -59,14 +49,6 @@ export default function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
   return (
     <>
       <AnimatePresence>
@@ -83,39 +65,57 @@ export default function Navigation() {
               duration: 0.3
             }}
           >
-        <div className="mx-auto px-6">
-          <div className="flex items-center justify-between py-4">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <Image src="/logo.svg" alt="Logo" width={80} height={100} />
-            </Link>
+            <div className="mx-auto px-6">
+              <div className="flex items-center justify-between py-4">
+                {/* Logo */}
+                <Link href="/" className="flex items-center gap-2">
+                  <span className="text-2xl font-bold text-primary">Sirene</span>
+                </Link>
 
+                {/* Desktop Navigation */}
+                <nav className="hidden lg:flex items-center">
+                  {navigationItems.map((item, index) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`text-sm font-medium transition-colors hover:text-foreground whitespace-nowrap ${
+                        pathname === item.href ? 'text-foreground' : 'text-muted-foreground'
+                      } ${index > 0 ? 'mr-8' : ''}`}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <ModeToggle />
-              <Button size="sm" asChild>
-                <Link href="https://sirengroup.com/contact">Let's work together</Link>
-              </Button>
+                {/* Desktop CTA */}
+                <div className="hidden lg:flex items-center space-x-4">
+                  <ModeToggle />
+                  <Button size="sm" asChild>
+                    <Link href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+                      <MessageSquare className="h-4 w-4 ml-2" />
+                      تواصل عبر واتساب
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Toggle mobile menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="h-6 w-6" />
+                  ) : (
+                    <Menu className="h-6 w-6" />
+                  )}
+                </button>
+              </div>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
           </motion.div>
         )}
       </AnimatePresence>
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
@@ -131,65 +131,36 @@ export default function Navigation() {
             <div className="h-full overflow-y-auto">
               <div className="max-w-7xl mx-auto px-6 py-6 space-y-6 pb-8">
                 
-                {/* Mobile Platform 
+                {/* Mobile Navigation Links */}
                 <div>
-                  <h3 className="font-semibold text-foreground mb-3">Platform</h3>
-                  <div className="space-y-2 pl-4">
-                    {solutions.map((solution) => (
+                  <h3 className="font-semibold text-foreground mb-3">القائمة الرئيسية</h3>
+                  <div className="space-y-2 pr-4">
+                    {navigationItems.map((item) => (
                       <Link
-                        key={solution.href}
-                        href={solution.href}
-                        className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}>
-                        <div className="font-medium">{solution.title}</div>
-                        <div className="text-sm text-muted-foreground">{solution.description}</div>
+                        key={item.href}
+                        href={item.href}
+                        className={`block py-2 transition-colors hover:text-foreground whitespace-nowrap ${
+                          pathname === item.href ? 'text-foreground font-medium' : 'text-muted-foreground'
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {item.label}
                       </Link>
                     ))}
                   </div>
-                </div>*/}
-
-                {/* Mobile Resources 
-                <div>
-                  <h3 className="font-semibold text-foreground mb-3">Resources</h3>
-                  <div className="space-y-2 pl-4">
-                    {resources.map((resource) => (
-                      <Link
-                        key={resource.href}
-                        href={resource.href}
-                        className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}>
-                        <div className="font-medium">{resource.title}</div>
-                        <div className="text-sm text-muted-foreground">{resource.description}</div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>*/}
-
-                {/* Mobile Pricing 
-                <div className="space-y-2">
-                  <Link
-                    href="/pricing"
-                    className="block py-2 font-semibold text-foreground hover:text-primary transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Pricing
-                  </Link>
                 </div>
-                  */}
+
                 {/* Mobile CTA */}
                 <div className="flex flex-col space-y-3 pt-4 border-t border-border/20">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-foreground">Theme</span>
+                    <span className="text-sm font-medium text-foreground">المظهر</span>
                     <ModeToggle />
                   </div>
-                  <Button variant="ghost" size="sm" asChild>
-                    <Link href="https://sirengroup.com/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                    Join Newsletter
-                    </Link>
-                  </Button>
                   <Button size="sm" asChild>
-                    <Link href="https://sirengroup.com/consultation" onClick={() => setIsMobileMenuOpen(false)}>
-                    Get a Consultation                    </Link>
+                    <Link href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" onClick={() => setIsMobileMenuOpen(false)}>
+                      <MessageSquare className="h-4 w-4 ml-2" />
+                      تواصل عبر واتساب
+                    </Link>
                   </Button>
                 </div>
               </div>

@@ -77,6 +77,13 @@ const config: Config = {
   				"Roboto",
   				"sans-serif",
   			],
+  			arabic: [
+  				"var(--font-ibm-plex-sans-arabic)",
+  				"IBM Plex Sans Arabic",
+  				"Noto Sans Arabic",
+  				"Arial",
+  				"sans-serif",
+  			],
   		},
   		spacing: {
   			18: "4.5rem",

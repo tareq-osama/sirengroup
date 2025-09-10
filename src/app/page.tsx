@@ -1,51 +1,68 @@
-import React from "react";
-import Image from "next/image";
+import { PageHero } from "@/components/page-hero";
+import { Section } from "@/components/section";
+import { TwoColumn } from "@/components/two-column";
+import { FeatureGrid } from "@/components/feature-grid";
+import { Card } from "@/components/card";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, Check, X, Play, Globe, Zap, Users, BarChart3, Clock, Star } from "lucide-react";
-import FeaturesSlider from "@/components/marketing/features";
+import { GraduationCap, BookOpen, BrainCircuit } from "lucide-react";
+import { basicServices, heroContent } from "@/lib/content";
+import Link from "next/link";
 
-export default function HomePage() {
+export default function Home() {
+  const highlightServices = basicServices.slice(0, 3).map(service => ({
+    title: service.title,
+    description: service.description,
+    icon: <service.icon className="h-8 w-8" />
+  }));
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden">
-        <div className=" pt-6 bg-gradient-to-b from-background via-background/95 to-background/90" />
-        <div className="relative items-center justify-center flex-col mx-auto px-6 h-svh flex text-center">
-   
-          {/* Main headline */}
-          <div className="flex flex-col items-center justify-center">
-          <h1 className="   text-start text-6xl md:text-6xl font-bold text-foreground mb-8 tracking-tight">
-          Digital Designer 
-          & Web Developer
-          </h1>
-          </div>
+      <PageHero
+        title={heroContent.title}
+        description={heroContent.description}
+        cta={{
+          text: heroContent.cta,
+          href: heroContent.ctaLink
+        }}
+        className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800"
+      />
 
-          {/* Subtitle */}
-          <p className=" text-left md:text-center text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-          Tareq is a Digital Designer and Web Developer, focused on merging web technologies, AI, marketing and branding strategies to build innovative solutions that drive business growth and elevate brands presence.
+      {/* Two Column Section */}
+      <TwoColumn
+        title="أبرز الخدمات"
+        description="نقدم مجموعة شاملة من الخدمات المصممة خصيصاً لطلاب الدراسات العليا"
+        imageSrc="/images/hero.jpg"
+        imageAlt="مركز Sirene للدراسات العليا"
+        reverse={false}
+      >
+        <FeatureGrid 
+          items={highlightServices} 
+          columns={3}
+          className="mt-8"
+        />
+      </TwoColumn>
 
-          </p>
-          
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Button size="lg" className="px-8 py-3 text-base font-semibold">
-            Join Newsletter
-            </Button>
-            <Button variant="ghost" size="lg" className="px-8 py-3 text-base font-semibold group">
-            Get a Consultation
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
+      {/* Callout Section */}
+      <Section className="bg-muted/50">
+        <div className="max-w-4xl mx-auto text-center">
+          <Card
+            title="تابعوا أحدث الأخبار والفعاليات العلمية"
+            description="تابعوا أحدث الأخبار والفعاليات العلمية عبر هذا الموقع، واكتشفوا الفرص التعليمية المتاحة لكم."
+            className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20"
+            actions={
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild>
+                  <Link href="/services">اكتشف خدماتنا</Link>
+                </Button>
+                <Button variant="outline" asChild>
+                  <Link href="/contact">تواصل معنا</Link>
+                </Button>
+              </div>
+            }
+          />
         </div>
-      </section>
-
-      {/* <FeaturesSlider/> */}
-
-
-
-
-
+      </Section>
     </div>
   );
 }

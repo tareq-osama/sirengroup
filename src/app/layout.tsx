@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, IBM_Plex_Sans_Arabic } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/marketing/site-nav"
 import Footer from "@/components/marketing/footer"
@@ -16,30 +16,37 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  display: 'swap',
+  variable: '--font-ibm-plex-sans-arabic',
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://sirengroup.com'),
   title: {
-    default: " ",
-    template: "%s | Sirengroup"
+    default: "مركز Sirene للدراسات العليا",
+    template: "%s | مركز Sirene للدراسات العليا"
   },
-  description: "Sirengroup is the complete client management platform for one-person businesses. Streamline client communication, automate invoicing, track projects, and grow your revenue with our all-in-one solution.",
+  description: "مركز متخصص في دعم طلاب الماجستير والدكتوراه، حضوريًا وعن بُعد. نقدم برامج تعليمية تفاعلية ودورات تدريبية متخصصة.",
   keywords: [
-    "client portal",
-    "business management software",
-    "freelancer tools",
-    "project tracking",
-    "client communication",
-    "invoice management",
-    "one-person business",
-    "small business software",
-    "client management system",
-    "professional services platform",
-    "business automation",
-    "client dashboard"
+    "الدراسات العليا",
+    "الماجستير",
+    "الدكتوراه",
+    "البحث العلمي",
+    "الجامعات",
+    "التسجيل الجامعي",
+    "الدورات البحثية",
+    "الإشراف العلمي",
+    "الرسائل العلمية",
+    "المنهجية البحثية",
+    "التدريب الأكاديمي",
+    "الدراسات العليا عن بُعد"
   ],
-  authors: [{ name: "Sirengroup Team", url: "https://sirengroup.com" }],
-  creator: "Sirengroup",
-  publisher: "Sirengroup Inc.",
+  authors: [{ name: "مركز Sirene للدراسات العليا", url: "https://sirengroup.com" }],
+  creator: "مركز Sirene للدراسات العليا",
+  publisher: "مركز Sirene للدراسات العليا",
   formatDetection: {
     email: false,
     address: false,
@@ -47,25 +54,25 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "ar_SA",
     url: "https://sirengroup.com",
-    title: "Sirengroup",
-    description: " ",
-    siteName: "Sirengroup",
+    title: "مركز Sirene للدراسات العليا",
+    description: "مركز متخصص في دعم طلاب الماجستير والدكتوراه، حضوريًا وعن بُعد",
+    siteName: "مركز Sirene للدراسات العليا",
     images: [
       {
         url: "https://sirengroup.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Sirengroup",
+        alt: "مركز Sirene للدراسات العليا",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sirengroup",
-    description: "",
-    creator: "@Sirengroup",
+    title: "مركز Sirene للدراسات العليا",
+    description: "مركز متخصص في دعم طلاب الماجستير والدكتوراه، حضوريًا وعن بُعد",
+    creator: "@SireneCenter",
     images: ["https://sirengroup.com/twitter-image.jpg"],
   },
   robots: {
@@ -158,7 +165,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="ar" dir="rtl" suppressHydrationWarning className={`${inter.variable} ${ibmPlexSansArabic.variable}`}>
       <head>
 
      {/* Tailwind CSS */}
