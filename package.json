@@ -39,6 +39,7 @@
     "next-videos": "^1.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "swiper": "^12.0.2",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7"
   },
