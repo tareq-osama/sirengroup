@@ -138,21 +138,21 @@ export const facultyMembers: FacultyMember[] = [
     name: "د. أحمد محمد",
     role: "مدير المركز",
     bio: "خبير في الدراسات العليا مع أكثر من 15 عامًا من الخبرة في الإشراف على الرسائل العلمية.",
-    avatar: "/images/faculty/ahmed-mohamed.jpg",
+    avatar: "faculty-avatar-1", // Using avatar key for Unsplash
     badges: ["دكتوراه في الإدارة", "خبير معتمد", "15+ سنة خبرة"]
   },
   {
     name: "د. فاطمة علي",
     role: "أستاذة المنهجية البحثية",
     bio: "متخصصة في المناهج البحثية والإحصاء مع خبرة واسعة في تدريب الباحثين.",
-    avatar: "/images/faculty/fatima-ali.jpg",
+    avatar: "faculty-avatar-2", // Using avatar key for Unsplash
     badges: ["دكتوراه في الإحصاء", "خبيرة منهجية", "10+ سنة خبرة"]
   },
   {
     name: "د. محمد حسن",
     role: "مستشار التسجيل الجامعي",
     bio: "خبير في شؤون التسجيل في الجامعات الدولية مع شبكة واسعة من العلاقات الأكاديمية.",
-    avatar: "/images/faculty/mohamed-hassan.jpg",
+    avatar: "faculty-avatar-3", // Using avatar key for Unsplash
     badges: ["خبير تسجيل جامعي", "شبكة علاقات دولية", "8+ سنة خبرة"]
   }
 ];

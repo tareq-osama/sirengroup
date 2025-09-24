@@ -2,6 +2,7 @@ import { Card as ShadCard, CardContent, CardDescription, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Download, ExternalLink, FileText, BookOpen, Search, Link as LinkIcon, Play } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface ResourceCardProps {
@@ -35,15 +36,25 @@ export function ResourceCard({
   
   return (
     <ShadCard className={`h-full ${className}`}>
-      <CardHeader>
-        <div className="flex items-center justify-between mb-2">
-          <div className="flex items-center space-x-2">
-            <Icon className="h-5 w-5 text-primary" />
-            <Badge variant="outline" className="text-xs">
-              {kind}
-            </Badge>
-          </div>
+      {/* Book Image */}
+      <div className="relative w-full min-h-72 overflow-hidden rounded-t-lg">
+        <Image
+          src="/images/book.jpg"
+          alt={`${title} - ${kind}`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        {/* Overlay with kind badge */}
+        <div className="absolute top-3 left-3">
+          <Badge variant="secondary" className="text-xs bg-white/90 text-black">
+            <Icon className="h-3 w-3 ml-1" />
+            {kind}
+          </Badge>
         </div>
+      </div>
+      
+      <CardHeader>
         <CardTitle className="text-lg font-semibold">{title}</CardTitle>
         <CardDescription className="text-muted-foreground leading-relaxed">
           {description}

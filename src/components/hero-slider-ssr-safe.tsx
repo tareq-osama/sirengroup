@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { heroSlidesContent } from '@/lib/content';
+import Iridescence from './Iridescence';
 
 interface HeroSliderSSRSafeProps {
   className?: string;
@@ -15,16 +16,15 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
-  // Prepare slides with background options
+  // Prepare slides with iridescence color options
   const slides = heroSlidesContent.map((slideContent, index) => ({
     ...slideContent,
-    // Use different gradient backgrounds for each slide
-    background: `bg-gradient-to-br ${
-      index === 0 ? 'from-blue-900 via-blue-800 to-indigo-900' :
-      index === 1 ? 'from-purple-900 via-purple-800 to-pink-900' :
-      index === 2 ? 'from-green-900 via-emerald-800 to-teal-900' :
-      'from-orange-900 via-red-800 to-pink-900'
-    }`,
+    // Use different iridescence colors for each slide
+    iridescenceColor: 
+      index === 0 ? [0.2, 0.4, 0.8] :  // Blue tones
+      index === 1 ? [0.6, 0.2, 0.8] :  // Purple tones
+      index === 2 ? [0.2, 0.8, 0.4] :  // Green tones
+      [0.8, 0.4, 0.2],                 // Orange tones
   }));
 
   useEffect(() => {
@@ -79,8 +79,13 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
     return (
       <section className={`relative min-h-screen overflow-hidden ${className}`}>
         <div className="absolute inset-0">
-          {/* Dynamic Gradient Background */}
-          <div className={`absolute inset-0 ${slide.background}`} />
+          {/* Iridescence Background */}
+          <Iridescence
+            color={slide.iridescenceColor}
+            mouseReact={false}
+            amplitude={0.1}
+            speed={1.0}
+          />
           {slide.overlay && (
             <div className="absolute inset-0 bg-black/50" />
           )}
@@ -134,8 +139,13 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
           >
             {/* Background */}
             <div className="absolute inset-0">
-              {/* Dynamic Gradient Background */}
-              <div className={`absolute inset-0 ${slide.background}`} />
+              {/* Iridescence Background */}
+              <Iridescence
+                color={slide.iridescenceColor}
+                mouseReact={false}
+                amplitude={0.1}
+                speed={1.0}
+              />
               {/* Overlay */}
               {slide.overlay && (
                 <div className="absolute inset-0 bg-black/50" />

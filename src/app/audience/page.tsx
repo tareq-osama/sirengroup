@@ -33,7 +33,7 @@ export default function AudiencePage() {
       <TwoColumn
         title="طلاب مرحلة ما بعد التعليم الجامعي"
         description="نركز على الطلاب المتميزين الذين يمتلكون معدلات عالية في البكالوريوس ويرغبون في متابعة دراساتهم العليا. نقدم لهم الدعم الكامل في اختيار التخصص المناسب والجامعة الملائمة، بالإضافة إلى الإشراف المستمر على أبحاثهم."
-        imageSrc="/images/audience-students.jpg"
+        imageKey="audience-students"
         imageAlt="طلاب الدراسات العليا"
         reverse={false}
         className="bg-muted/50"
@@ -43,7 +43,7 @@ export default function AudiencePage() {
       <TwoColumn
         title="الباحثون المستقلون"
         description="نقدم خدمات متخصصة للباحثين المستقلين الذين يهدفون إلى تطوير قدراتهم البحثية ونشر أعمالهم في المجلات المحكمة. نركز على صقل مهاراتهم في المناهج البحثية والتحليل الإحصائي."
-        imageSrc="/images/audience-researchers.jpg"
+        imageKey="audience-researchers"
         imageAlt="الباحثون المستقلون"
         reverse={true}
       />
@@ -52,7 +52,7 @@ export default function AudiencePage() {
       <TwoColumn
         title="المهتمون بالبحث العلمي الأكاديمي"
         description="نستقبل جميع المهتمين بالبحث العلمي الأكاديمي، سواء كانوا خريجي جامعات أو مهتمين بالمجال الأكاديمي. نقدم لهم برامج تدريبية شاملة لصقل مهاراتهم البحثية وتمكينهم من المشاركة الفعالة في المجتمع الأكاديمي."
-        imageSrc="/images/audience-academic.jpg"
+        imageKey="audience-academic"
         imageAlt="المهتمون بالبحث العلمي"
         reverse={false}
         className="bg-muted/50"

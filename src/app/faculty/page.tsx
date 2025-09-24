@@ -17,7 +17,7 @@ export default function FacultyPage() {
       <TwoColumn
         title="فريق أكاديمي متميز"
         description="يضم مركزنا نخبة من الأساتذة والخبراء المتخصصين في مختلف المجالات الأكاديمية، مع خبرات واسعة في الإشراف على الرسائل العلمية وتدريب الباحثين. جميع أعضاء الفريق حاصلون على درجات علمية عالية من جامعات مرموقة، ولديهم سجل حافل من الإنجازات البحثية والأكاديمية."
-        imageSrc="/images/faculty.jpg"
+        imageKey="faculty-main"
         imageAlt="أعضاء الهيئة التدريسية"
         reverse={false}
       />
@@ -40,7 +40,7 @@ export default function FacultyPage() {
                   name={member.name}
                   role={member.role}
                   bio={member.bio}
-                  avatar={member.avatar}
+                  avatarKey={member.avatar}
                   badges={member.badges}
                 />
               ))}

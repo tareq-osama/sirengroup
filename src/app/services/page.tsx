@@ -3,23 +3,43 @@
 import { useState } from "react";
 import { PageHero } from "@/components/page-hero";
 import { Section } from "@/components/section";
-import { FeatureGrid } from "@/components/feature-grid";
+import { ModernFeatureGrid } from "@/components/modern-feature-grid";
 import { TwoColumn } from "@/components/two-column";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { basicServices, specialServices } from "@/lib/content";
 
 export default function ServicesPage() {
-  const basicServicesItems = basicServices.map(service => ({
-    title: service.title,
-    description: service.description,
-    icon: <service.icon className="h-8 w-8" />
-  }));
+  const basicServicesItems = basicServices.map((service, index) => {
+    // Map specific services to their image keys
+    const imageKeyMap = {
+      "تأمين التسجيل في الجامعات": "service-university-registration",
+      "دورات بحثية متخصصة": "service-research-courses", 
+      "دورات منهجية وورش إحصاء وتحليل": "service-methodology-statistics",
+      "الدعم المنهجي": "service-methodological-support",
+      "الإشراف العلمي": "service-academic-supervision"
+    };
+    
+    return {
+      title: service.title,
+      description: service.description,
+      imageKey: imageKeyMap[service.title as keyof typeof imageKeyMap] || `service-basic-${index + 1}`
+    };
+  });
 
-  const specialServicesItems = specialServices.map(service => ({
-    title: service.title,
-    description: service.description,
-    icon: <service.icon className="h-8 w-8" />
-  }));
+  const specialServicesItems = specialServices.map((service, index) => {
+    // Map specific services to their image keys
+    const imageKeyMap = {
+      "محاضرات علمية في المواد التخصصية": "service-specialized-lectures",
+      "الإشراف الكامل على الرسائل العلمية (ماجستير ودكتوراه)": "service-thesis-supervision",
+      "إقامة مناقشات علمية": "service-academic-discussions"
+    };
+    
+    return {
+      title: service.title,
+      description: service.description,
+      imageKey: imageKeyMap[service.title as keyof typeof imageKeyMap] || `service-special-${index + 1}`
+    };
+  });
 
   return (
     <div className="min-h-screen">
@@ -39,16 +59,18 @@ export default function ServicesPage() {
             </TabsList>
             
             <TabsContent value="basic">
-              <FeatureGrid 
+              <ModernFeatureGrid 
                 items={basicServicesItems} 
                 columns={3}
+                variant="image-top"
               />
             </TabsContent>
             
             <TabsContent value="special">
-              <FeatureGrid 
+              <ModernFeatureGrid 
                 items={specialServicesItems} 
                 columns={3}
+                variant="image-top"
               />
             </TabsContent>
           </Tabs>
@@ -59,7 +81,7 @@ export default function ServicesPage() {
       <TwoColumn
         title="دعم شامل للبحث العلمي"
         description="نقدم دعمًا شاملاً لطلاب الدراسات العليا في جميع مراحل البحث العلمي، من اختيار الموضوع وحتى المناقشة النهائية. فريقنا من الخبراء المتخصصين يضمن لك الحصول على أفضل النتائج."
-        imageSrc="/images/services.jpg"
+        imageKey="services-main"
         imageAlt="دعم البحث العلمي"
         reverse={false}
         className="bg-muted/50"
@@ -69,7 +91,7 @@ export default function ServicesPage() {
       <TwoColumn
         title="برامج تدريبية متخصصة"
         description="نقدم برامج تدريبية متخصصة في المناهج البحثية والإحصاء والتحليل، باستخدام أحدث البرامج والتقنيات. جميع برامجنا مصممة لتواكب المعايير الدولية في البحث العلمي."
-        imageSrc="/images/training.jpg"
+        imageKey="training-programs"
         imageAlt="البرامج التدريبية"
         reverse={true}
       />

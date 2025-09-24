@@ -28,7 +28,7 @@ export default function Home() {
       <TwoColumn
         title="أبرز الخدمات"
         description="نقدم مجموعة شاملة من الخدمات المصممة خصيصاً لطلاب الدراسات العليا"
-        imageSrc="/images/hero.jpg"
+        imageKey="home-hero"
         imageAlt="مركز Sirene للدراسات العليا"
         reverse={false}
       >
