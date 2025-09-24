@@ -1,11 +1,15 @@
-import { PageHero } from "@/components/page-hero";
+import HeroSliderSSRSafe from "@/components/hero-slider-ssr-safe";
+import TestimonialsSection from "@/components/testimonials-section";
+import ProcessSection from "@/components/process-section";
+import FeaturesShowcase from "@/components/features-showcase";
+import CTASection from "@/components/cta-section";
 import { Section } from "@/components/section";
 import { TwoColumn } from "@/components/two-column";
 import { FeatureGrid } from "@/components/feature-grid";
 import { Card } from "@/components/card";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, BookOpen, BrainCircuit } from "lucide-react";
-import { basicServices, heroContent } from "@/lib/content";
+import { basicServices } from "@/lib/content";
 import Link from "next/link";
 
 export default function Home() {
@@ -17,16 +21,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <PageHero
-        title={heroContent.title}
-        description={heroContent.description}
-        cta={{
-          text: heroContent.cta,
-          href: heroContent.ctaLink
-        }}
-        className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800"
-      />
+      {/* Hero Image Slider */}
+      <HeroSliderSSRSafe />
 
       {/* Two Column Section */}
       <TwoColumn
@@ -43,13 +39,54 @@ export default function Home() {
         />
       </TwoColumn>
 
-      {/* Callout Section */}
-      <Section className="bg-muted/50">
+      {/* CTA Section 1 */}
+      <CTASection
+        variant="primary"
+        title="ابدأ رحلتك الأكاديمية اليوم"
+        description="انضم إلى مئات الطلاب الذين نجحوا في إكمال دراساتهم العليا معنا. احجز استشارتك المجانية الآن."
+        primaryAction={{
+          text: "احجز استشارة مجانية",
+          href: "/contact"
+        }}
+        secondaryAction={{
+          text: "اكتشف خدماتنا",
+          href: "/services"
+        }}
+        iconName="calendar"
+      />
+
+      {/* Features Showcase */}
+      <FeaturesShowcase />
+
+      {/* Process Section */}
+      <ProcessSection />
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
+
+      {/* CTA Section 2 */}
+      <CTASection
+        variant="secondary"
+        title="هل لديك أسئلة؟"
+        description="فريقنا الأكاديمي المتخصص جاهز للإجابة على جميع استفساراتك ومساعدتك في اتخاذ القرار المناسب."
+        primaryAction={{
+          text: "تواصل معنا",
+          href: "/contact"
+        }}
+        secondaryAction={{
+          text: "اتصل بنا مباشرة",
+          href: "tel:+1234567890"
+        }}
+        iconName="phone"
+      />
+
+      {/* Final Callout Section */}
+      <Section className="bg-muted/30">
         <div className="max-w-4xl mx-auto text-center">
           <Card
             title="تابعوا أحدث الأخبار والفعاليات العلمية"
             description="تابعوا أحدث الأخبار والفعاليات العلمية عبر هذا الموقع، واكتشفوا الفرص التعليمية المتاحة لكم."
-            className="bg-gradient-to-r from-primary/5 to-primary/10 border-primary/20"
+            className="bg-background/80 backdrop-blur-sm border-border"
             actions={
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild>

@@ -232,6 +232,83 @@ export const heroContent = {
   ctaLink: "/services"
 };
 
+// Hero Slider Data
+export type HeroSlide = {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  cta: {
+    text: string;
+    href: string;
+  };
+  overlay?: boolean;
+};
+
+// Hero slides content - images will be populated dynamically from Unsplash
+export const heroSlidesContent = [
+  {
+    id: "slide-1",
+    title: "مرحبًا بكم في مركز Sirene للدراسات العليا",
+    subtitle: "حيث نوفّر بيئة تعليمية تفاعلية لطلاب الماجستير والدكتوراه",
+    description: "يهدف مركزنا إلى تمكين الباحثين من تطوير مهاراتهم البحثية، وإنجاز أبحاثهم الأكاديمية بكفاءة عالية.",
+    imageAlt: "مركز Sirene للدراسات العليا - الصورة الرئيسية",
+    cta: {
+      text: "اكتشف خدماتنا",
+      href: "/services"
+    },
+    overlay: true,
+    unsplashQuery: "university education"
+  },
+  {
+    id: "slide-2",
+    title: "الإشراف العلمي المتخصص",
+    subtitle: "متابعة الأبحاث خطوة بخطوة وتقديم التوجيه الأكاديمي المستمر",
+    description: "نقدم إشرافًا علميًا متخصصًا لطلاب الماجستير والدكتوراه، مع نخبة من الأساتذة المتخصصين في مختلف المجالات.",
+    imageAlt: "الإشراف العلمي في مركز Sirene",
+    cta: {
+      text: "تعرف على أعضاء الهيئة",
+      href: "/faculty"
+    },
+    overlay: true,
+    unsplashQuery: "graduate students research"
+  },
+  {
+    id: "slide-3",
+    title: "دورات بحثية متخصصة",
+    subtitle: "صقل مهارات الطلاب في إعداد الدراسات والأبحاث الأكاديمية",
+    description: "نقدم دورات تدريبية متخصصة في المنهجية البحثية والإحصاء، باستخدام أحدث البرامج والأدوات العلمية.",
+    imageAlt: "الدورات البحثية في مركز Sirene",
+    cta: {
+      text: "استكشف المكتبة الرقمية",
+      href: "/library"
+    },
+    overlay: true,
+    unsplashQuery: "academic library study"
+  },
+  {
+    id: "slide-4",
+    title: "تأمين التسجيل في الجامعات",
+    subtitle: "مساعدة الطلاب في اختيار الجامعات المناسبة والتسجيل فيها",
+    description: "نساعد طلاب الدراسات العليا في اختيار الجامعات المناسبة والتسجيل فيها، مع ضمان الحصول على أفضل الفرص الأكاديمية.",
+    imageAlt: "التسجيل الجامعي في مركز Sirene",
+    cta: {
+      text: "تواصل معنا",
+      href: "/contact"
+    },
+    overlay: true,
+    unsplashQuery: "university campus"
+  }
+];
+
+// Legacy export for backward compatibility
+export const heroSlides: HeroSlide[] = heroSlidesContent.map(slide => ({
+  ...slide,
+  image: "/images/hero.jpg" // Fallback image
+}));
+
 // About Page Content
 export const aboutContent = {
   vision: {
