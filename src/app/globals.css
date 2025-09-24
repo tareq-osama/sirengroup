@@ -4,12 +4,7 @@
 
 @import '../lib/typography.css';
 
-/* Swiper CSS */
-@import 'swiper/css';
-@import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
-@import 'swiper/css/scrollbar';
-@import 'swiper/css/keyboard';
+/* Swiper CSS removed - using custom SSR-safe slider */
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -40,87 +35,7 @@ body {
   font-variant-ligatures: common-ligatures;
 }
 
-/*Swiper Slider*/
-.features-swiper {
-  padding: 80px 40px;
-  overflow: visible !important;
-}
-
-@media (min-width: 768px) {
-  .features-swiper {
-    padding: 80px 60px;
-   }
-}
-
-@media (min-width: 1024px) {
-  .features-swiper {
-    padding: 80px 80px;
-   }
-}
-    
-.swiper-slide {
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-/* Hero Image Slider Styles */
-.hero-swiper {
-  height: 100vh !important;
-}
-
-.hero-swiper .swiper-slide {
-  height: 100vh;
-}
-
-.hero-swiper-bullet {
-  width: 12px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.hero-swiper-bullet-active {
-  background: white;
-  transform: scale(1.2);
-}
-
-.hero-swiper-button-next,
-.hero-swiper-button-prev {
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-}
-
-.hero-swiper-button-next:hover,
-.hero-swiper-button-prev:hover {
-  opacity: 1;
-}
-
-.hero-swiper-button-next.swiper-button-disabled,
-.hero-swiper-button-prev.swiper-button-disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-/* RTL Support for Hero Slider */
-[dir="rtl"] .hero-swiper-button-next {
-  left: 1.5rem;
-  right: auto;
-}
-
-[dir="rtl"] .hero-swiper-button-prev {
-  right: 1.5rem;
-  left: auto;
-}
-
-/* Fix arrow directions for RTL - flip the icons horizontally */
-[dir="rtl"] .hero-swiper-button-next svg,
-[dir="rtl"] .hero-swiper-button-prev svg {
-  transform: scaleX(-1);
-}
-
-/*Swiper Slider ends*/
+/* Swiper styles removed - using custom SSR-safe slider */
 
 @layer base {
   :root {
