@@ -91,7 +91,7 @@ export default function RippleGrid({
         ctx.strokeStyle = enableRainbow ? 
           `hsl(${(progress * 360) % 360}, 70%, 50%)` : 
           gridColor;
-        ctx.lineWidth = thickness * (1 - progress);
+        ctx.lineWidth = gridThickness * (1 - progress);
         
         ctx.beginPath();
         ctx.arc(ripple.x, ripple.y, radius, 0, Math.PI * 2);
