@@ -109,8 +109,8 @@ export default function FeaturesShowcase() {
             >
               <Card className="h-full p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <feature.icon className="h-6 w-6 text-primary" />
+                  <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <feature.icon className="h-6 w-6 text-blue-600" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold mb-2" dir="rtl">

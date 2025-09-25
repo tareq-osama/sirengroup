@@ -115,7 +115,7 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
                     className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-colors shadow-lg"
                   >
                     {slide.cta.text}
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-5 h-5 text-blue-600" />
                   </Link>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
                           className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-colors shadow-lg"
                         >
                           {slide.cta.text}
-                          <ChevronLeft className="w-5 h-5" />
+                          <ChevronLeft className="w-5 h-5 text-blue-600" />
                         </Link>
                       </motion.div>
                     </motion.div>
@@ -241,7 +241,7 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
         className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-6 h-6 text-blue-600" />
       </button>
       
       <button
@@ -249,7 +249,7 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
         className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-6 h-6 text-blue-600" />
       </button>
 
       {/* Pagination Dots */}
@@ -275,9 +275,9 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
         aria-label={isAutoplayActive ? 'Pause slideshow' : 'Play slideshow'}
       >
         {isAutoplayActive ? (
-          <Pause className="w-5 h-5" />
+          <Pause className="w-5 h-5 text-blue-600" />
         ) : (
-          <Play className="w-5 h-5" />
+          <Play className="w-5 h-5 text-blue-600" />
         )}
       </button>
     </section>

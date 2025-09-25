@@ -127,7 +127,7 @@ export default function ProcessSection() {
                 <ul className="space-y-3 text-sm text-muted-foreground">
                   {step.details.map((detail, detailIndex) => (
                     <li key={detailIndex} className="flex items-start gap-3">
-                      <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                      <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{detail}</span>
                     </li>
                   ))}
@@ -136,7 +136,7 @@ export default function ProcessSection() {
                 {/* Arrow for mobile */}
                 {index < processSteps.length - 1 && (
                   <div className="lg:hidden flex justify-center mt-8">
-                    <ArrowRight className="h-6 w-6 text-muted-foreground rotate-90" />
+                    <ArrowRight className="h-6 w-6 text-blue-600 rotate-90" />
                   </div>
                 )}
               </motion.div>

@@ -16,7 +16,7 @@ export default function Home() {
   const highlightServices = basicServices.slice(0, 3).map(service => ({
     title: service.title,
     description: service.description,
-    icon: <service.icon className="h-8 w-8" />
+    icon: <service.icon className="h-8 w-8 text-blue-600" />
   }));
 
   return (

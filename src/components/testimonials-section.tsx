@@ -52,7 +52,7 @@ export default function TestimonialsSection() {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4"
           >
-            <Quote className="h-4 w-4" />
+            <Quote className="h-4 w-4 text-blue-600" />
             آراء طلابنا
           </motion.div>
           <motion.h2
@@ -89,7 +89,7 @@ export default function TestimonialsSection() {
               <Card className="h-full p-6 hover:shadow-lg transition-shadow">
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-500" />
                   ))}
                 </div>
                 <blockquote className="text-muted-foreground mb-6 leading-relaxed" dir="rtl">
