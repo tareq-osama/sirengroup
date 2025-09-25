@@ -15,7 +15,7 @@ export default function AudiencePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <PageHero
-        title="الجمهور المستهدف"
+        title="خدماتُنا لِمَن ؟"
         description="نخدم مجموعة متنوعة من الطلاب والباحثين المهتمين بالدراسات العليا والبحث العلمي"
       />
 
@@ -62,7 +62,7 @@ export default function AudiencePage() {
       <Section className="bg-primary/5">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-foreground mb-4">
-            هل أنت من الجمهور المستهدف؟
+            ماذا تنتظر ؟
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
             إذا كنت من أي من هذه الفئات، فنحن هنا لمساعدتك في تحقيق أهدافك الأكاديمية
