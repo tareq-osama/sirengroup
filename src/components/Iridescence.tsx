@@ -54,12 +54,12 @@ export default function Iridescence({
   mouseReact = true, 
   ...rest 
 }) {
-  const ctnDom = useRef(null);
+  const ctnDom = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: 0.5, y: 0.5 });
 
   useEffect(() => {
     if (!ctnDom.current) return;
-    const ctn = ctnDom.current;
+    const ctn = ctnDom.current as HTMLDivElement;
     const renderer = new Renderer();
     const gl = renderer.gl;
     gl.clearColor(1, 1, 1, 1);
