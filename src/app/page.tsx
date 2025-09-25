@@ -52,7 +52,6 @@ export default function Home() {
           text: "اكتشف خدماتنا",
           href: "/services"
         }}
-        iconName="calendar"
       />
 
       {/* Features Showcase */}
@@ -77,7 +76,6 @@ export default function Home() {
           text: "اتصل بنا مباشرة",
           href: "tel:+1234567890"
         }}
-        iconName="phone"
       />
 
       {/* Final Callout Section */}
