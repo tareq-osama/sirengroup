@@ -220,7 +220,7 @@ export const navigationItems = [
   { label: "الشراكات", href: "/partners" },
   { label: "أعضاء الهيئة", href: "/faculty" },
   { label: "المكتبة الرقمية", href: "/library" },
-  { label: "تواصل", href: "/contact" }
+  { label: "تواصل معنا", href: "/contact" }
 ];
 
 // Hero Content
