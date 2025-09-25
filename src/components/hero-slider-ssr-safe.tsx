@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play, Pause, Loader2 } from 'lucide-react';
 import { heroSlidesContent } from '@/lib/content';
 
 interface HeroSliderSSRSafeProps {
@@ -14,13 +14,24 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
   const [isClient, setIsClient] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(false);
 
   // Prepare slides
   const slides = heroSlidesContent;
 
   useEffect(() => {
     setIsClient(true);
+    setIsVideoLoading(true); // Set loading state only on client side
   }, []);
+
+  // Handle video loading events
+  const handleVideoLoad = () => {
+    setIsVideoLoading(false);
+  };
+
+  const handleVideoError = () => {
+    setIsVideoLoading(false);
+  };
 
   useEffect(() => {
     if (!isClient || !isAutoplayActive) return;
@@ -77,6 +88,8 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
+            onLoadedData={handleVideoLoad}
+            onError={handleVideoError}
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
           </video>
@@ -129,11 +142,23 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
           muted
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
+          onLoadedData={handleVideoLoad}
+          onError={handleVideoError}
         >
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/30" />
+        
+        {/* Loading Overlay - Only show on client side */}
+        {isClient && isVideoLoading && (
+          <div className="absolute inset-0 bg-black/50 flex items-center justify-center z-20">
+            <div className="text-center text-white">
+              <Loader2 className="h-12 w-12 animate-spin mx-auto mb-4" />
+              <p className="text-lg font-medium">جاري تحميل الفيديو...</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Slides Container */}
