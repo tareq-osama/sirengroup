@@ -6,7 +6,10 @@ import { Section } from "@/components/section";
 import { ModernFeatureGrid } from "@/components/modern-feature-grid";
 import { TwoColumn } from "@/components/two-column";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { MessageSquare, Phone } from "lucide-react";
 import { basicServices, specialServices } from "@/lib/content";
+import Link from "next/link";
 
 export default function ServicesPage() {
   const basicServicesItems = basicServices.map((service, index) => {
@@ -22,7 +25,23 @@ export default function ServicesPage() {
     return {
       title: service.title,
       description: service.description,
-      imageKey: imageKeyMap[service.title as keyof typeof imageKeyMap] || `service-basic-${index + 1}`
+      imageKey: imageKeyMap[service.title as keyof typeof imageKeyMap] || `service-basic-${index + 1}`,
+      actions: (
+        <div className="flex flex-col gap-2">
+          <Button asChild size="sm" className="w-full">
+            <Link href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <MessageSquare className="h-4 w-4 ml-2" />
+              تواصل عبر واتساب
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="sm" className="w-full">
+            <Link href="/contact">
+              <Phone className="h-4 w-4 ml-2" />
+              استشارة مجانية
+            </Link>
+          </Button>
+        </div>
+      )
     };
   });
 
@@ -37,7 +56,23 @@ export default function ServicesPage() {
     return {
       title: service.title,
       description: service.description,
-      imageKey: imageKeyMap[service.title as keyof typeof imageKeyMap] || `service-special-${index + 1}`
+      imageKey: imageKeyMap[service.title as keyof typeof imageKeyMap] || `service-special-${index + 1}`,
+      actions: (
+        <div className="flex flex-col gap-2">
+          <Button asChild size="sm" className="w-full">
+            <Link href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+              <MessageSquare className="h-4 w-4 ml-2" />
+              تواصل عبر واتساب
+            </Link>
+          </Button>
+          <Button asChild variant="outline" size="sm" className="w-full">
+            <Link href="/contact">
+              <Phone className="h-4 w-4 ml-2" />
+              استشارة مجانية
+            </Link>
+          </Button>
+        </div>
+      )
     };
   });
 
