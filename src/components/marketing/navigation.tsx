@@ -14,16 +14,22 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll-based navigation visibility
+  // Handle scroll-based navigation visibility and background
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
+      // For home page: set scrolled state for background change
+      if (pathname === '/') {
+        setIsScrolled(currentScrollY > 100);
+      }
+      
       // Show navigation when scrolling up or at the top
-      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+      if (currentScrollY < lastScrollY || currentScrollY < 50) {
         setIsVisible(true);
-      } else {
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         // Hide navigation when scrolling down (but not at the very top)
         setIsVisible(false);
       }
@@ -33,7 +39,7 @@ export default function Navigation() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, [lastScrollY, pathname]);
 
   // Prevent body scroll when mobile menu is open
   React.useEffect(() => {
@@ -54,22 +60,28 @@ export default function Navigation() {
       <AnimatePresence>
         {isVisible && (
           <motion.div 
-            className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/20"
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+              pathname === '/' && !isScrolled 
+                ? 'bg-transparent backdrop-blur-none border-b-0' 
+                : 'bg-background/80 backdrop-blur-md border-b border-border/20'
+            }`}
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
             transition={{ 
               type: "spring", 
-              stiffness: 300, 
-              damping: 30,
-              duration: 0.3
+              stiffness: 400, 
+              damping: 40,
+              duration: 0.4
             }}
           >
             <div className="mx-auto px-6">
               <div className="flex items-center justify-between py-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2">
-                  <span className="text-2xl font-bold text-primary">Sirene</span>
+                  <span className={`text-2xl font-bold transition-colors duration-500 ease-in-out ${
+                    pathname === '/' && !isScrolled ? 'text-white' : 'text-primary'
+                  }`}>Sirene</span>
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -78,8 +90,10 @@ export default function Navigation() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`text-sm font-medium transition-colors hover:text-foreground whitespace-nowrap ${
-                        pathname === item.href ? 'text-foreground' : 'text-muted-foreground'
+                      className={`text-sm font-medium transition-colors duration-500 ease-in-out whitespace-nowrap ${
+                        pathname === '/' && !isScrolled 
+                          ? `hover:text-white ${pathname === item.href ? 'text-white' : 'text-white/80'}`
+                          : `hover:text-foreground ${pathname === item.href ? 'text-foreground' : 'text-muted-foreground'}`
                       } ${index > 0 ? 'mr-8' : ''}`}
                     >
                       {item.label}
@@ -101,7 +115,11 @@ export default function Navigation() {
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="lg:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                  className={`lg:hidden p-2 transition-colors duration-500 ease-in-out ${
+                    pathname === '/' && !isScrolled 
+                      ? 'text-white/80 hover:text-white' 
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
                   aria-label="Toggle mobile menu"
                 >
                   {isMobileMenuOpen ? (

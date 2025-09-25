@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
 import { heroSlidesContent } from '@/lib/content';
-import Iridescence from './Iridescence';
 
 interface HeroSliderSSRSafeProps {
   className?: string;
@@ -16,16 +15,8 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
   const [isAutoplayActive, setIsAutoplayActive] = useState(true);
   const [isClient, setIsClient] = useState(false);
 
-  // Prepare slides with iridescence color options
-  const slides = heroSlidesContent.map((slideContent, index) => ({
-    ...slideContent,
-    // Use different iridescence colors for each slide
-    iridescenceColor: 
-      index === 0 ? [0.2, 0.4, 0.8] :  // Blue tones
-      index === 1 ? [0.6, 0.2, 0.8] :  // Purple tones
-      index === 2 ? [0.2, 0.8, 0.4] :  // Green tones
-      [0.8, 0.4, 0.2],                 // Orange tones
-  }));
+  // Prepare slides
+  const slides = heroSlidesContent;
 
   useEffect(() => {
     setIsClient(true);
@@ -79,16 +70,18 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
     return (
       <section className={`relative min-h-screen overflow-hidden ${className}`}>
         <div className="absolute inset-0">
-          {/* Iridescence Background */}
-          <Iridescence
-            color={slide.iridescenceColor}
-            mouseReact={false}
-            amplitude={0.1}
-            speed={1.0}
-          />
-          {slide.overlay && (
-            <div className="absolute inset-0 bg-black/50" />
-          )}
+          {/* Video Background */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/hero-bg.mp4" type="video/mp4" />
+          </video>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/30" />
         </div>
         <div className="relative z-10 h-full flex items-center">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
@@ -128,6 +121,21 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
 
   return (
     <section className={`relative min-h-screen overflow-hidden ${className}`}>
+      {/* Video Background - Shared across all slides */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
+
       {/* Slides Container */}
       <div className="relative h-screen">
         {slides.map((slide, index) => (
@@ -137,20 +145,6 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {/* Background */}
-            <div className="absolute inset-0">
-              {/* Iridescence Background */}
-              <Iridescence
-                color={slide.iridescenceColor}
-                mouseReact={false}
-                amplitude={0.1}
-                speed={1.0}
-              />
-              {/* Overlay */}
-              {slide.overlay && (
-                <div className="absolute inset-0 bg-black/50" />
-              )}
-            </div>
 
             {/* Content */}
             <div className="relative z-10 h-full flex items-center">
@@ -241,7 +235,7 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
         className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6 text-blue-600" />
+        <ChevronLeft className="w-6 h-6 text-white" />
       </button>
       
       <button
@@ -249,7 +243,7 @@ export default function HeroSliderSSRSafe({ className = '' }: HeroSliderSSRSafeP
         className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-colors"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6 text-blue-600" />
+        <ChevronRight className="w-6 h-6 text-white" />
       </button>
 
       {/* Pagination Dots */}
